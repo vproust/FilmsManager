@@ -1,0 +1,19 @@
+{% extends "ValentinFilmsManagerBundle::layout.html.twig" %}
+
+{% block title %}
+  Index - {{ parent() }}
+{% endblock %}
+
+{% block valentinFilmsManager_body %}
+{#Here we show the films list#}
+  <h2>Lists of Users</h2>
+
+  <ul>
+    <ul>
+  {% for user in users %}
+    <li>{{ user.firstName }} {{ user.name }}</li>
+  {% endfor %}
+    </ul>
+  </ul>
+
+{% endblock %}

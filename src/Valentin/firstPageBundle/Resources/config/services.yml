@@ -1,0 +1,7 @@
+parameters:
+#    valentinfirst_page.example.class: Valentin\firstPageBundle\Example
+
+services:
+#    valentinfirst_page.example:
+#        class: %valentinfirst_page.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

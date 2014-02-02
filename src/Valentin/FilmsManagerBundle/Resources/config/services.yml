@@ -1,0 +1,7 @@
+parameters:
+#    valentin_films_manager.example.class: Valentin\FilmsManagerBundle\Example
+
+services:
+#    valentin_films_manager.example:
+#        class: %valentin_films_manager.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

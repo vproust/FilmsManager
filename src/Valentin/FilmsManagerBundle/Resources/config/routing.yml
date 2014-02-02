@@ -1,0 +1,29 @@
+valentin_films_manager_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ValentinFilmsManagerBundle:Default:index }
+
+valentin_films_manager_index:
+    path:      /{page}
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:index, page: 1 }
+    requirements:
+        page:  \d*
+
+valentin_films_manager_addUser:
+    path:      /addUser
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:addUser }
+
+valentin_films_manager_addUserManually:
+    path:      /addUserManually
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:addUserManually }
+
+valentin_films_manager_modifier:
+    path:      /modifier/{id}
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:modifier }
+    requirements:
+        id:  \d+
+
+valentin_films_manager_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:supprimer }
+    requirements:
+        id:  \d+

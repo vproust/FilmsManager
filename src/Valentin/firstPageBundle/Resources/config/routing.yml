@@ -1,0 +1,27 @@
+Valentinfirst_page_accueil:
+    path:      /{page}
+    defaults:  { _controller: ValentinfirstPageBundle:Blog:index, page: 1 }
+    requirements:
+        page:  \d*
+
+Valentinfirst_Page_voir:
+    path:      /article/{id}
+    defaults:  { _controller: ValentinfirstPageBundle:Blog:voir }
+    requirements:
+        id:  \d+
+
+Valentinfirst_Page_ajouter:
+    path:      /ajouter
+    defaults:  { _controller: ValentinfirstPageBundle:Blog:ajouter }
+
+Valentinfirst_Page_modifier:
+    path:      /modifier/{id}
+    defaults:  { _controller: ValentinfirstPageBundle:Blog:modifier }
+    requirements:
+        id:  \d+
+
+Valentinfirst_Page_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: ValentinfirstPageBundle:Blog:supprimer }
+    requirements:
+        id:  \d+
