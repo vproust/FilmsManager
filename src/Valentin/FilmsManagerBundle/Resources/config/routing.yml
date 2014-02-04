@@ -12,9 +12,9 @@ valentin_films_manager_addUser:
     path:      /addUser
     defaults:  { _controller: ValentinFilmsManagerBundle:Manager:addUser }
 
-valentin_films_manager_addUserManually:
-    path:      /addUserManually
-    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:addUserManually }
+valentin_films_manager_addFilm:
+    path:      /addFilm
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:addFilm }
 
 valentin_films_manager_modifier:
     path:      /modifier/{id}

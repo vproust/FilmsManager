@@ -1,0 +1,27 @@
+Vider le cache, tout le cache
+
+php app/console cache:clear
+
+Voici qui vient de vider le cache… de l'environnement de développement ! Eh oui, n'oubliez donc jamais de bien vider le cache de production, via la commande :
+
+php app/console cache:clear --env=prodVider le cache, tout le cache
+
+Générer un bundle
+C:\wamp\www\Symfony>php app/console generate:bundle
+
+Générer une entité
+C:\wamp\www\Symfony>php app/console generate:doctrine:entity
+
+Liste des objets possibles :array, object, boolean, integer, smallint, bigint, string, text, datetime, datetimetz, date, time, decimal, et float. Tapez donc datetime.
+
+Tester la requete de mise à jour d'une table :
+php app/console doctrine:schema:update --dump-sql
+
+L'exécuter :
+C:\wamp\www\Symfony>php app/console doctrine:schema:update --force
+
+Ajouter les getters et les setters
+php app/console doctrine:generate:entities SdzBlogBundle:Commentaire
+
+Création d'un formulaire
+php app/console doctrine:generate:form SdzBlogBundle:Article

@@ -12,6 +12,13 @@
     <ul>
   {% for user in users %}
     <li>{{ user.firstName }} {{ user.name }}</li>
+    <ul>
+  
+    {% for film in user.films %}
+    <li>{{ film.name }} {{ film.genre }}</li>
+  {% endfor %}
+  
+  </ul>
   {% endfor %}
     </ul>
   </ul>

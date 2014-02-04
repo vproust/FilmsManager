@@ -1,0 +1,17 @@
+{% extends "ValentinFilmsManagerBundle::layout.html.twig" %}
+
+{% block title %}
+  Add a film - {{ parent() }}
+{% endblock %}
+
+{% block valentinFilmsManager_body %}
+
+  <h2>Add a movie</h2>
+
+  {% include "ValentinFilmsManagerBundle:Manager:form.html.twig" %}
+
+  <p>
+    You're adding a new movie.
+  </p>
+
+{% endblock %}

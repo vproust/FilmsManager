@@ -16,10 +16,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('firstName')  
-            ->add('films', 'collection', array('type'         => new FilmType(),
-                                              'allow_add'    => true,
-                                              'allow_delete' => true))
+            ->add('firstName')
     ;
     }
     
