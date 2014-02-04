@@ -46,26 +46,23 @@ class __TwigTemplate_599c917a5b4b25787b2c4e22089ad8358b704c13b85da9e603a4606b90c
         echo "    <h1>Movies sorted by user</h1>
 
     <hr>
-
+    
     ";
-        // line 17
-        echo "    
-    ";
-        // line 18
+        // line 14
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable(array(0 => "info", 1 => "success", 2 => "error"));
         foreach ($context['_seq'] as $context["_key"] => $context["type"]) {
-            // line 19
+            // line 15
             echo "        ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flashbag"), "get", array(0 => (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type"))), "method"));
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 20
+                // line 16
                 echo "            <div class=\"alert alert-";
                 echo twig_escape_filter($this->env, (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "html", null, true);
                 echo "\">
                 ";
-                // line 21
+                // line 17
                 echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
                 echo "
             </div>
@@ -74,27 +71,26 @@ class __TwigTemplate_599c917a5b4b25787b2c4e22089ad8358b704c13b85da9e603a4606b90c
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 24
+            // line 20
             echo "    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['type'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 25
+        // line 21
         echo "
     ";
-        // line 27
-        echo "    ";
+        // line 22
         $this->displayBlock('valentinFilmsManager_body', $context, $blocks);
-        // line 29
+        // line 24
         echo "
 ";
     }
 
-    // line 27
+    // line 22
     public function block_valentinFilmsManager_body($context, array $blocks = array())
     {
-        // line 28
+        // line 23
         echo "    ";
     }
 
@@ -110,6 +106,6 @@ class __TwigTemplate_599c917a5b4b25787b2c4e22089ad8358b704c13b85da9e603a4606b90c
 
     public function getDebugInfo()
     {
-        return array (  98 => 28,  95 => 27,  90 => 29,  87 => 27,  78 => 24,  69 => 21,  64 => 20,  59 => 19,  55 => 18,  46 => 10,  43 => 8,  40 => 7,  33 => 4,  30 => 3,  84 => 25,  76 => 20,  65 => 18,  61 => 17,  52 => 17,  48 => 13,  42 => 9,  39 => 7,  32 => 4,  29 => 3,);
+        return array (  94 => 23,  91 => 22,  86 => 24,  84 => 22,  81 => 21,  75 => 20,  66 => 17,  61 => 16,  56 => 15,  52 => 14,  46 => 10,  43 => 8,  40 => 7,  33 => 4,  30 => 3,);
     }
 }

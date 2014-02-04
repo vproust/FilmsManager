@@ -76,7 +76,7 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
         echo "\">List of movies</a></li>
             <li><a href=\"";
         // line 35
-        echo $this->env->getExtension('routing')->getPath("valentin_films_manager_addUser");
+        echo $this->env->getExtension('routing')->getPath("valentin_films_manager_addFilm");
         echo "\">Add a film</a></li>
           </ul>
         </div>
@@ -98,7 +98,7 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
   ";
         // line 51
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 56
+        // line 55
         echo "
   </body>
 </html>";
@@ -131,11 +131,9 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     public function block_javascripts($context, array $blocks = array())
     {
         // line 52
-        echo "    ";
-        // line 53
         echo "    <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 54
+        // line 53
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>
   ";
@@ -153,6 +151,6 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
 
     public function getDebugInfo()
     {
-        return array (  139 => 54,  136 => 53,  134 => 52,  131 => 51,  127 => 40,  124 => 39,  117 => 11,  114 => 10,  108 => 8,  102 => 56,  100 => 51,  88 => 41,  86 => 39,  79 => 35,  75 => 34,  68 => 29,  62 => 27,  54 => 25,  52 => 24,  49 => 23,  38 => 13,  36 => 10,  31 => 8,  23 => 2,);
+        return array (  137 => 53,  134 => 52,  131 => 51,  127 => 40,  124 => 39,  117 => 11,  114 => 10,  108 => 8,  102 => 55,  100 => 51,  88 => 41,  79 => 35,  68 => 29,  62 => 27,  54 => 25,  49 => 23,  38 => 13,  36 => 10,  31 => 8,  23 => 2,  94 => 23,  91 => 22,  86 => 39,  84 => 22,  81 => 21,  75 => 34,  66 => 17,  61 => 16,  56 => 15,  52 => 24,  46 => 10,  43 => 8,  40 => 7,  33 => 4,  30 => 3,);
     }
 }

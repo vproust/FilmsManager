@@ -16,14 +16,8 @@ valentin_films_manager_addFilm:
     path:      /addFilm
     defaults:  { _controller: ValentinFilmsManagerBundle:Manager:addFilm }
 
-valentin_films_manager_modifier:
-    path:      /modifier/{id}
-    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:modifier }
-    requirements:
-        id:  \d+
-
-valentin_films_manager_supprimer:
-    path:      /supprimer/{id}
-    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:supprimer }
+valentin_films_manager_removeFilm:
+    path:      /removeFilm/{id}
+    defaults:  { _controller: ValentinFilmsManagerBundle:Manager:removeFilm }
     requirements:
         id:  \d+

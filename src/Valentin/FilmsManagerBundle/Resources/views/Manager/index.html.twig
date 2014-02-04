@@ -15,7 +15,7 @@
     <ul>
   
     {% for film in user.films %}
-    <li>{{ film.name }} {{ film.genre }}</li>
+    <li>{{ film.name }} {{ film.genre }}  <a href="{{ path('valentin_films_manager_removeFilm', {'id': film.id}) }}">Remove this film</a></li>
   {% endfor %}
   
   </ul>

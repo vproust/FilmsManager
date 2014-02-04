@@ -66,7 +66,9 @@ class __TwigTemplate_8c2998830afffda14c122878f49fa381cce677a7f07bf08dc55d09d2ce9
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["film"]) ? $context["film"] : $this->getContext($context, "film")), "name"), "html", null, true);
                 echo " ";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["film"]) ? $context["film"] : $this->getContext($context, "film")), "genre"), "html", null, true);
-                echo "</li>
+                echo "  <a href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("valentin_films_manager_removeFilm", array("id" => $this->getAttribute((isset($context["film"]) ? $context["film"] : $this->getContext($context, "film")), "id"))), "html", null, true);
+                echo "\">Remove this film</a></li>
   ";
             }
             $_parent = $context['_parent'];
@@ -99,6 +101,6 @@ class __TwigTemplate_8c2998830afffda14c122878f49fa381cce677a7f07bf08dc55d09d2ce9
 
     public function getDebugInfo()
     {
-        return array (  84 => 23,  76 => 20,  65 => 18,  61 => 17,  52 => 14,  48 => 13,  42 => 9,  39 => 7,  32 => 4,  29 => 3,);
+        return array (  86 => 23,  78 => 20,  65 => 18,  61 => 17,  52 => 14,  48 => 13,  42 => 9,  39 => 7,  32 => 4,  29 => 3,);
     }
 }

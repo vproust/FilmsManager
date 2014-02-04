@@ -18,10 +18,6 @@ class ManagerController extends Controller
 		->getManager()
 		->getRepository('ValentinFilmsManagerBundle:User')
 		->findAll();
-		$films = $this->getDoctrine()
-		->getManager()
-		->getRepository('ValentinFilmsManagerBundle:Film')
-		->findAll();
 		// Everything go to the view
 		return $this->render('ValentinFilmsManagerBundle:Manager:index.html.twig', array(
 		'users' => $users
@@ -32,29 +28,23 @@ class ManagerController extends Controller
 	  // Creation of a user object
 	  $user = new User();
 
-	  // On ajoute les champs de l'entité que l'on veut à notre formulaire
 	  $form = $this->createForm(new UserType, $user);
-	   // On récupère la requête
-    $request = $this->get('request');
+	   
+      $request = $this->get('request');
 
-    // On vérifie qu'elle est de type POST
     if ($request->getMethod() == 'POST') {
-      // On fait le lien Requête <-> Formulaire
-      // À partir de maintenant, la variable $article contient les valeurs entrées dans le formulaire par le visiteur
-      $form->bind($request);
+       $form->bind($request);
 
-      // On vérifie que les valeurs entrées sont correctes
-      // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+      // Checking the validity of the submission
       if ($form->isValid()) {
       	$em = $this->getDoctrine()->getManager();
       	$em->persist($user);
         $em->flush();
 
-        // On redirige vers la page de visualisation de l'article nouvellement créé
+        // Redirection to the homepage of Bundle
         return $this->redirect($this->generateUrl('valentin_films_manager_index'));
       }
   }
-	  // On passe la méthode createView() du formulaire à la vue afin qu'elle puisse afficher le formulaire toute seule
 	  return $this->render('ValentinFilmsManagerBundle:Manager:addUser.html.twig', array(
 	    'form' => $form->createView(),
 	  ));
@@ -65,19 +55,13 @@ class ManagerController extends Controller
 	  // Creation of a film object
 	  $film = new Film();
 
-	  // On ajoute les champs de l'entité que l'on veut à notre formulaire
 	  $form = $this->createForm(new FilmType, $film);
-	   // On récupère la requête
     $request = $this->get('request');
 
-    // On vérifie qu'elle est de type POST
     if ($request->getMethod() == 'POST') {
-      // On fait le lien Requête <-> Formulaire
-      // À partir de maintenant, la variable $article contient les valeurs entrées dans le formulaire par le visiteur
-      $form->bind($request);
+        $form->bind($request);
 
-      // On vérifie que les valeurs entrées sont correctes
-      // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+     
       if ($form->isValid()) {
       	$em = $this->getDoctrine()->getManager();
       	$user = new User();
@@ -90,14 +74,22 @@ class ManagerController extends Controller
       	$em->persist($user_1);
         $em->flush();
 
-        // On redirige vers la page de visualisation de l'article nouvellement créé
+        
         return $this->redirect($this->generateUrl('valentin_films_manager_index'));
       }
   }
-	  // On passe la méthode createView() du formulaire à la vue afin qu'elle puisse afficher le formulaire toute seule
 	  return $this->render('ValentinFilmsManagerBundle:Manager:addFilm.html.twig', array(
 	    'form' => $form->createView(),
 	  ));
 
+    }
+    public function removeFilmAction(Film $film){
+    	$em = $this->getDoctrine()->getManager();
+		$em->remove($film);
+		$em->flush();
+		
+		$this->get('session')->getFlashBag()->add('info', 'Film removed from the list');
+		
+		return $this->redirect($this->generateUrl('valentin_films_manager_index'));
     }
 }
