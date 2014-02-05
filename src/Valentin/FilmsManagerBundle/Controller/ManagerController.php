@@ -20,76 +20,76 @@ class ManagerController extends Controller
 		->findAll();
 		// Everything go to the view
 		return $this->render('ValentinFilmsManagerBundle:Manager:index.html.twig', array(
-		'users' => $users
-		));
+			'users' => $users
+			));
 	}
 	public function addUserAction()
 	{
 	  // Creation of a user object
-	  $user = new User();
+		$user = new User();
 
-	  $form = $this->createForm(new UserType, $user);
-	   
-      $request = $this->get('request');
+		$form = $this->createForm(new UserType, $user);
+		
+		$request = $this->get('request');
 
-    if ($request->getMethod() == 'POST') {
-       $form->bind($request);
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
 
       // Checking the validity of the submission
-      if ($form->isValid()) {
-      	$em = $this->getDoctrine()->getManager();
-      	$em->persist($user);
-        $em->flush();
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($user);
+				$em->flush();
 
         // Redirection to the homepage of Bundle
-        return $this->redirect($this->generateUrl('valentin_films_manager_index'));
-      }
-  }
-	  return $this->render('ValentinFilmsManagerBundle:Manager:addUser.html.twig', array(
-	    'form' => $form->createView(),
-	  ));
+				return $this->redirect($this->generateUrl('valentin_films_manager_index'));
+			}
+		}
+		return $this->render('ValentinFilmsManagerBundle:Manager:addUser.html.twig', array(
+			'form' => $form->createView(),
+			));
 		
 	}
 	public function addFilmAction()
 	{
 	  // Creation of a film object
-	  $film = new Film();
+		$film = new Film();
 
-	  $form = $this->createForm(new FilmType, $film);
-    $request = $this->get('request');
+		$form = $this->createForm(new FilmType, $film);
+		$request = $this->get('request');
 
-    if ($request->getMethod() == 'POST') {
-        $form->bind($request);
+		if ($request->getMethod() == 'POST') {
+			$form->bind($request);
 
-     
-      if ($form->isValid()) {
-      	$em = $this->getDoctrine()->getManager();
-      	$user = new User();
-      	$repository = $this->getDoctrine()
-                   ->getManager()
-                   ->getRepository('ValentinFilmsManagerBundle:User');
+			
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getManager();
+				$user = new User();
+				$repository = $this->getDoctrine()
+				->getManager()
+				->getRepository('ValentinFilmsManagerBundle:User');
 
-        $user_1 = $repository->find(1);
-      	$user_1->addFilm($film);
-      	$em->persist($user_1);
-        $em->flush();
+				$user_1 = $repository->find(1);
+				$user_1->addFilm($film);
+				$em->persist($user_1);
+				$em->flush();
 
-        
-        return $this->redirect($this->generateUrl('valentin_films_manager_index'));
-      }
-  }
-	  return $this->render('ValentinFilmsManagerBundle:Manager:addFilm.html.twig', array(
-	    'form' => $form->createView(),
-	  ));
+				
+				return $this->redirect($this->generateUrl('valentin_films_manager_index'));
+			}
+		}
+		return $this->render('ValentinFilmsManagerBundle:Manager:addFilm.html.twig', array(
+			'form' => $form->createView(),
+			));
 
-    }
-    public function removeFilmAction(Film $film){
-    	$em = $this->getDoctrine()->getManager();
+	}
+	public function removeFilmAction(Film $film){
+		$em = $this->getDoctrine()->getManager();
 		$em->remove($film);
 		$em->flush();
 		
 		$this->get('session')->getFlashBag()->add('info', 'Film removed from the list');
 		
 		return $this->redirect($this->generateUrl('valentin_films_manager_index'));
-    }
+	}
 }
