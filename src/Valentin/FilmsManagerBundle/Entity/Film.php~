@@ -32,11 +32,12 @@ class Film
      * @var string
      *
      * @ORM\Column(name="genre", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Valentin\FilmsManagerBundle\Entity\Genre",cascade={"persist"})
      */
     private $genre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\FilmsManagerBundle\Entity\User",cascade={"persist"})    
+     * @ORM\ManyToOne(targetEntity="Valentin\FilmsManagerBundle\Entity\User",inversedBy="films",cascade={"persist"})    
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -73,29 +74,6 @@ class Film
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set genre
-     *
-     * @param string $genre
-     * @return Film
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Get genre
-     *
-     * @return string 
-     */
-    public function getGenre()
-    {
-        return $this->genre;
     }
 
     /**

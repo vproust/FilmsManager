@@ -64,10 +64,10 @@ class User extends \Valentin\FilmsManagerBundle\Entity\User implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'name', 'firstName', 'films');
+            return array('__isInitialized__', 'id', 'films');
         }
 
-        return array('__isInitialized__', 'id', 'name', 'firstName', 'films');
+        return array('__isInitialized__', 'id', 'films');
     }
 
     /**
@@ -186,50 +186,6 @@ class User extends \Valentin\FilmsManagerBundle\Entity\User implements \Doctrine
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
 
         return parent::getId();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setName($name)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
-
-        return parent::setName($name);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getName()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
-
-        return parent::getName();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setFirstName($firstName)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', array($firstName));
-
-        return parent::setFirstName($firstName);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getFirstName()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', array());
-
-        return parent::getFirstName();
     }
 
     /**

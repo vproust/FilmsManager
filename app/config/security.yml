@@ -1,5 +1,6 @@
 security:
     encoders:
+        Valentin\FilmsManagerBundle\Entity\User: sha512
         Valentin\UserBundle\Entity\User: sha512
 
     role_hierarchy:

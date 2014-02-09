@@ -17,14 +17,14 @@
       <div id="header" class="hero-unit">
 
         <h1>Manage your movies</h1>
-        <p>This web application let you manage the movies you've seen</p>
+        <p>This web application lets you manage the movies you've seen</p>
       </div>
       {# app/Resources/views/layout.html.twig #}
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     Loogged on Films Manager as {{ app.user.username }} - <a href="{{ path('fos_user_security_logout') }}">Logout</a>
 {% else %}
-    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+    <a href="{{ path('fos_user_security_re') }}">Connexion</a>
 {% endif %}
 
       <div class="row">
@@ -33,6 +33,7 @@
           <ul class="nav nav-pills nav-stacked">
             <li><a href="{{ path('valentin_films_manager_index') }}">List of movies</a></li>
             <li><a href="{{ path('valentin_films_manager_addFilm') }}">Add a film</a></li>
+            <li><a href="{{ path('fos_user_registration_register') }}">Sign in</a></li>
           </ul>
         </div>
         <div id="content" class="span9">

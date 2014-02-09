@@ -13,14 +13,20 @@ class ManagerController extends Controller
 {
 	public function indexAction()
 	{
+		$currentUser = $this->get('security.context')->getToken()->getUser();
 		// Get the users of the app
+
 		$users = $this->getDoctrine()
 		->getManager()
-		->getRepository('ValentinFilmsManagerBundle:User')
+		->getRepository('ValentinUserBundle:User')
 		->findAll();
+
+
+
 		// Everything go to the view
 		return $this->render('ValentinFilmsManagerBundle:Manager:index.html.twig', array(
-			'users' => $users
+			'users' => $users,
+			'currentUser' => $currentUser
 			));
 	}
 	public function addUserAction()
@@ -69,9 +75,9 @@ class ManagerController extends Controller
 				->getManager()
 				->getRepository('ValentinFilmsManagerBundle:User');
 
-				$user_1 = $repository->find(1);
-				$user_1->addFilm($film);
-				$em->persist($user_1);
+				$user = $this->get('security.context')->getToken()->getUser();
+				$user->getFilmsManagerUser()->addFilm($film);
+				$em->persist($user);
 				$em->flush();
 
 				

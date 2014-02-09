@@ -6,16 +6,21 @@
 
 {% block valentinFilmsManager_body %}
 {#Here we show the films list#}
-  <h2>Lists of Users</h2>
+<h2>My movies</h2>
+{% for film in currentUser.getFilmsManagerUser().films %}
+    <li>{{ film.name }} {{ film.genre }}  <a href="{{ path('valentin_films_manager_removeFilm', {'id': film.id}) }}">Remove this film</a></li>
+  {% endfor %}
+
+  <h2>Movies of other Users</h2>
 
   <ul>
     <ul>
   {% for user in users %}
-    <li>{{ user.firstName }} {{ user.name }}</li>
+    <li>{{ user.username }}</li>
     <ul>
   
-    {% for film in user.films %}
-    <li>{{ film.name }} {{ film.genre }}  <a href="{{ path('valentin_films_manager_removeFilm', {'id': film.id}) }}">Remove this film</a></li>
+    {% for film in user.getFilmsManagerUser().films %}
+    <li>{{ film.name }} {{ film.genre }}</li>
   {% endfor %}
   
   </ul>
