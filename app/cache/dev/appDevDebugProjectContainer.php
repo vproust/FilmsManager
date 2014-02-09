@@ -45,6 +45,7 @@ class appDevDebugProjectContainer extends Container
             'cache_clearer' => 'getCacheClearerService',
             'cache_warmer' => 'getCacheWarmerService',
             'controller_name_converter' => 'getControllerNameConverterService',
+            'coresphere_console.toolbar' => 'getCoresphereConsole_ToolbarService',
             'data_collector.form' => 'getDataCollector_FormService',
             'data_collector.form.extractor' => 'getDataCollector_Form_ExtractorService',
             'data_collector.request' => 'getDataCollector_RequestService',
@@ -415,6 +416,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'coresphere_console.toolbar' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return CoreSphere\ConsoleBundle\DataCollector\DataCollector A CoreSphere\ConsoleBundle\DataCollector\DataCollector instance.
+     */
+    protected function getCoresphereConsole_ToolbarService()
+    {
+        return $this->services['coresphere_console.toolbar'] = new \CoreSphere\ConsoleBundle\DataCollector\DataCollector();
+    }
+
+    /**
      * Gets the 'data_collector.form' service.
      *
      * This service is shared.
@@ -625,7 +639,7 @@ class appDevDebugProjectContainer extends Container
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
         $c->addEventSubscriber(new \FOS\UserBundle\Doctrine\Orm\UserListener($this));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'symfony', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array()), $b, $c, array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'mysql51-113.perso', 'port' => NULL, 'dbname' => 'valentinqbdd', 'user' => 'valentinqbdd', 'password' => '3PPtPfnVpzxR', 'charset' => 'UTF8', 'driverOptions' => array()), $b, $c, array());
     }
 
     /**
@@ -1940,6 +1954,7 @@ class appDevDebugProjectContainer extends Container
         $instance->add(new \Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector($this->get('security.context', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->add(new \Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector($this));
         $instance->add($d);
+        $instance->add($this->get('coresphere_console.toolbar'));
 
         return $instance;
     }
@@ -2175,7 +2190,7 @@ class appDevDebugProjectContainer extends Container
         $k = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($a, $g, $this->get('security.authentication.session_strategy'), $e, 'main', $j, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $e, array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $c), array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $c, $d);
         $k->setRememberMeServices($h);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('security.user.provider.concrete.in_memory'), 1 => $b), 'main', $c, $d), 2 => $i, 3 => $k, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($a, $h, $g, $c, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '52f79203a49af', $c), 6 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $e, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $e, 'fos_user_security_login', false), NULL, NULL, $c));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('security.user.provider.concrete.in_memory'), 1 => $b), 'main', $c, $d), 2 => $i, 3 => $k, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($a, $h, $g, $c, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '52f7e22975622', $c), 6 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $e, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $e, 'fos_user_security_login', false), NULL, NULL, $c));
     }
 
     /**
@@ -3368,6 +3383,10 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('yml', 'C:\\wamp\\www\\Symfony\\vendor\\friendsofsymfony\\user-bundle\\FOS\\UserBundle/Resources/translations\\validators.vi.yml', 'vi', 'validators');
         $instance->addResource('yml', 'C:\\wamp\\www\\Symfony\\vendor\\friendsofsymfony\\user-bundle\\FOS\\UserBundle/Resources/translations\\validators.zh_CN.yml', 'zh_CN', 'validators');
         $instance->addResource('xlf', 'C:\\wamp\\www\\Symfony\\src\\Valentin\\UserBundle/Resources/translations\\messages.fr.xlf', 'fr', 'messages');
+        $instance->addResource('yml', 'C:\\wamp\\www\\Symfony\\vendor\\winzou\\console-bundle\\CoreSphere\\ConsoleBundle/Resources/translations\\messages.de.yml', 'de', 'messages');
+        $instance->addResource('yml', 'C:\\wamp\\www\\Symfony\\vendor\\winzou\\console-bundle\\CoreSphere\\ConsoleBundle/Resources/translations\\messages.en.yml', 'en', 'messages');
+        $instance->addResource('yml', 'C:\\wamp\\www\\Symfony\\vendor\\winzou\\console-bundle\\CoreSphere\\ConsoleBundle/Resources/translations\\messages.fr.yml', 'fr', 'messages');
+        $instance->addResource('yml', 'C:\\wamp\\www\\Symfony\\vendor\\winzou\\console-bundle\\CoreSphere\\ConsoleBundle/Resources/translations\\messages.ru.yml', 'ru', 'messages');
 
         return $instance;
     }
@@ -3455,6 +3474,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath('C:\\wamp\\www\\Symfony\\src\\Acme\\DemoBundle/Resources/views', 'AcmeDemo');
         $instance->addPath('C:\\wamp\\www\\Symfony\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', 'WebProfiler');
         $instance->addPath('C:\\wamp\\www\\Symfony\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views', 'SensioDistribution');
+        $instance->addPath('C:\\wamp\\www\\Symfony\\vendor\\winzou\\console-bundle\\CoreSphere\\ConsoleBundle/Resources/views', 'CoreSphereConsole');
         $instance->addPath('C:/wamp/www/Symfony/app/Resources/views');
         $instance->addPath('C:\\wamp\\www\\Symfony\\vendor\\symfony\\symfony\\src\\Symfony\\Bridge\\Twig/Resources/views/Form');
 
@@ -3536,7 +3556,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getWebProfiler_Controller_ProfilerService()
     {
-        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig'), 'data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => 'DoctrineBundle:Collector:db')), 'bottom');
+        return $this->services['web_profiler.controller.profiler'] = new \Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController($this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('profiler', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('twig'), array('data_collector.config' => array(0 => 'config', 1 => '@WebProfiler/Collector/config.html.twig'), 'data_collector.request' => array(0 => 'request', 1 => '@WebProfiler/Collector/request.html.twig'), 'data_collector.exception' => array(0 => 'exception', 1 => '@WebProfiler/Collector/exception.html.twig'), 'data_collector.events' => array(0 => 'events', 1 => '@WebProfiler/Collector/events.html.twig'), 'data_collector.logger' => array(0 => 'logger', 1 => '@WebProfiler/Collector/logger.html.twig'), 'data_collector.time' => array(0 => 'time', 1 => '@WebProfiler/Collector/time.html.twig'), 'data_collector.memory' => array(0 => 'memory', 1 => '@WebProfiler/Collector/memory.html.twig'), 'data_collector.router' => array(0 => 'router', 1 => '@WebProfiler/Collector/router.html.twig'), 'data_collector.form' => array(0 => 'form', 1 => '@WebProfiler/Collector/form.html.twig'), 'data_collector.security' => array(0 => 'security', 1 => '@Security/Collector/security.html.twig'), 'swiftmailer.data_collector' => array(0 => 'swiftmailer', 1 => '@Swiftmailer/Collector/swiftmailer.html.twig'), 'data_collector.doctrine' => array(0 => 'db', 1 => 'DoctrineBundle:Collector:db'), 'coresphere_console.toolbar' => array(0 => 'coresphere_console', 1 => 'CoreSphereConsoleBundle:Toolbar:toolbar')), 'bottom');
     }
 
     /**
@@ -3759,7 +3779,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('security.user_checker');
         $b = $this->get('security.encoder_factory');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.in_memory'), $a, 'secured_area', $b, true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $b, true), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, '89764251b4d7b3513c11d71c09ed7ee890559592', 'main'), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('52f79203a49af')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.in_memory'), $a, 'secured_area', $b, true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $b, true), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, '89764251b4d7b3513c11d71c09ed7ee890559592', 'main'), 3 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('52f7e22975622')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4068,22 +4088,22 @@ class appDevDebugProjectContainer extends Container
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
                 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle',
+                'CoreSphereConsoleBundle' => 'CoreSphere\\ConsoleBundle\\CoreSphereConsoleBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appDevDebugProjectContainer',
             'database_driver' => 'pdo_mysql',
-            'database_host' => '127.0.0.1',
+            'database_host' => 'mysql51-113.perso',
             'database_port' => NULL,
-            'database_name' => 'symfony',
-            'database_user' => 'root',
-            'database_password' => NULL,
+            'database_name' => 'valentinqbdd',
+            'database_user' => 'valentinqbdd',
+            'database_password' => '3PPtPfnVpzxR',
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
             'mailer_password' => NULL,
             'locale' => 'en',
             'secret' => '89764251b4d7b3513c11d71c09ed7ee890559592',
-            'database_path' => NULL,
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
             'response_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener',
@@ -4676,6 +4696,10 @@ class appDevDebugProjectContainer extends Container
                 'data_collector.doctrine' => array(
                     0 => 'db',
                     1 => 'DoctrineBundle:Collector:db',
+                ),
+                'coresphere_console.toolbar' => array(
+                    0 => 'coresphere_console',
+                    1 => 'CoreSphereConsoleBundle:Toolbar:toolbar',
                 ),
             ),
             'console.command.ids' => array(
