@@ -29,9 +29,6 @@ class Film
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="genre", type="string", length=255)
      * @ORM\ManyToOne(targetEntity="Valentin\FilmsManagerBundle\Entity\Genre",cascade={"persist"})
      */
     private $genre;

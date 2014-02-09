@@ -60,7 +60,7 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
         } else {
             // line 27
             echo "    <a href=\"";
-            echo $this->env->getExtension('routing')->getPath("fos_user_security_re");
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">Connexion</a>
 ";
         }
@@ -81,7 +81,7 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
             <li><a href=\"";
         // line 36
         echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
-        echo "\">Sign in</a></li>
+        echo "\">Register</a></li>
           </ul>
         </div>
         <div id=\"content\" class=\"span9\">

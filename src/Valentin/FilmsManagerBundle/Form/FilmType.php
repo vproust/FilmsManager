@@ -16,7 +16,7 @@ class FilmType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('genre')
+            ->add('genre', new GenreType());
             ;
     }
     

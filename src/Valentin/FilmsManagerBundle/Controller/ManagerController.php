@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Httpfoundation\Response;
 use Valentin\FilmsManagerBundle\Entity\User;
 use Valentin\FilmsManagerBundle\Entity\Film;
+use Valentin\FilmsManagerBundle\Entity\Genre;
 use Valentin\FilmsManagerBundle\Form\UserType;
 use Valentin\FilmsManagerBundle\Form\FilmType;
+use Valentin\FilmsManagerBundle\Form\GenreType;
 
 class ManagerController extends Controller
 {
@@ -60,6 +62,7 @@ class ManagerController extends Controller
 	{
 	  // Creation of a film object
 		$film = new Film();
+		$genre = new Genre();
 
 		$form = $this->createForm(new FilmType, $film);
 		$request = $this->get('request');
@@ -85,7 +88,7 @@ class ManagerController extends Controller
 			}
 		}
 		return $this->render('ValentinFilmsManagerBundle:Manager:addFilm.html.twig', array(
-			'form' => $form->createView(),
+			'form' => $form->createView()
 			));
 
 	}

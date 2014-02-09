@@ -29,9 +29,7 @@ class Film
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="genre", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Valentin\FilmsManagerBundle\Entity\Genre",cascade={"persist"})
      */
     private $genre;
 
@@ -76,29 +74,6 @@ class Film
     }
 
     /**
-     * Set genre
-     *
-     * @param string $genre
-     * @return Film
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Get genre
-     *
-     * @return string 
-     */
-    public function getGenre()
-    {
-        return $this->genre;
-    }
-
-    /**
      * Set user
      *
      * @param \Valentin\FilmsManagerBundle\Entity\User $user
@@ -119,5 +94,28 @@ class Film
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param \Valentin\FilmsManagerBundle\Entity\Genre $genre
+     * @return Film
+     */
+    public function setGenre(\Valentin\FilmsManagerBundle\Entity\Genre $genre = null)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return \Valentin\FilmsManagerBundle\Entity\Genre 
+     */
+    public function getGenre()
+    {
+        return $this->genre;
     }
 }
