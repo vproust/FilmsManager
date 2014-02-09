@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Valentin\FilmsManagerBundle\Entity\UserRepository")
  */
-class User
+class User extends Valentin\UserBundle\Entity\User
 {
     /**
      * @var integer
